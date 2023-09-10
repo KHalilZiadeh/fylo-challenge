@@ -1,0 +1,289 @@
+:root {
+  --font: "Raleway";
+  --pale-blue: 243, 100%, 93%;
+  --grayish-blue: 229, 7%, 55%;
+  --dark-blue: 228, 56%, 26%;
+  --very-dark-blue: 229, 57%, 11%;
+  --gradient-from: 6, 100%, 80%;
+  --gradient-to: 335, 100%, 65%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion = reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: url("./images/bg-mobile.png") hsl(var(--very-dark-blue));
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  color: hsl(var(--pale-blue));
+  font-family: var(--font), "Open Sans";
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  line-height: 1.5;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 20.5rem;
+}
+
+main .fylo {
+  background-color: hsl(var(--dark-blue));
+  border-radius: 10px 100px 10px 10px;
+  padding: 2.5rem;
+  animation: fade-from-top 1s ease-in-out;
+}
+
+main .fylo .logo {
+  margin-bottom: 2rem;
+}
+
+main .fylo .functions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+main .fylo .functions li {
+  background: hsl(var(--very-dark-blue));
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+main .fylo .functions li button {
+  all: unset;
+  display: grid;
+  place-items: center;
+}
+
+main .fylo .functions li img {
+  transform: scale(1);
+  transition: all 0.2s ease;
+}
+main .fylo .functions li:hover img {
+  transform: scale(1.2);
+}
+
+main .storage {
+  background-color: hsl(var(--dark-blue));
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  color: hsl(0, 100%, 100%, 0.8);
+  animation: fade-from-right 1s ease-in-out;
+}
+
+main .storage .data-info {
+  font-size: 0.9rem;
+  padding-bottom: 1rem;
+}
+
+main .storage .data-info .data {
+  font-weight: 700;
+}
+
+main .storage .process-bar {
+  background-color: hsl(var(--very-dark-blue), 0.5);
+  height: 1.2rem;
+  border-radius: 35px;
+  position: relative;
+}
+
+main .storage .process-bar::before {
+  content: "";
+  position: absolute;
+  width: 12.5rem;
+  height: 0.9rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 163, 153, 1) 15%,
+    rgba(255, 77, 151, 1) 100%
+  );
+  border-radius: 35px;
+  top: 50%;
+  left: 0.195rem;
+  translate: 0 -50%;
+}
+
+main .storage .process-bar::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  top: 50%;
+  left: 11.9rem;
+  translate: 0 -50%;
+}
+
+main .storage .storage-data {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+main .storage .data-bubble {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  width: 12rem;
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+}
+
+main .storage .data-bubble .bubble-text {
+  color: hsl(var(--dark-blue));
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+main .storage .data-bubble .bubble-text span {
+  color: hsl(var(--very-dark-blue));
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+footer {
+  position: absolute;
+  bottom: 1%;
+}
+
+@media (min-width: 62rem) {
+  body {
+    background: url("./images/bg-desktop.png"), hsl(var(--very-dark-blue));
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+  }
+
+  body main {
+    flex-direction: row;
+    width: 60rem;
+    gap: 2rem;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  body main .fylo {
+    width: 40%;
+  }
+
+  body main .storage {
+    width: 60%;
+    text-align: left;
+  }
+
+  body main .storage .process-bar::before {
+    width: 24rem;
+  }
+
+  body main .storage .process-bar::after {
+    left: 23.4rem;
+  }
+
+  body main .storage .data-bubble {
+    top: -3rem;
+    left: 77%;
+    translate: -50% 0;
+    transform: none;
+    animation: bubb-hop 1s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: 1.5s;
+  }
+
+  body main .storage .data-bubble:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+  }
+
+  body main .storage .data-bubble::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1.5rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+
+  body main .storage .storage-data {
+    padding-bottom: 0.4rem;
+  }
+
+  @media (min-width: 80rem) {
+    body {
+      background-position: 0vw 50vh;
+    }
+  }
+}
